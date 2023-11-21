@@ -1,0 +1,108 @@
+/* ========== 全体のスタイル ========== */
+body {
+    font-family: 'Noto Sans', sans-serif;
+    background-color: #f2f2f2;
+    color: #333;
+}
+
+/* ========== フォームのスタイル ========== */
+form {
+    max-width: 400px; /* フォームの最大幅を設定 */
+    margin: 0 auto; /* 左右のマージンを自動で調整して中央に配置 */
+    text-align: center; /* フォーム内のテキストを中央に配置 */
+}
+
+.form-field {
+    margin-bottom: 20px;
+    text-align: left; /* ラベルと入力フィールドを左揃えにする */
+}
+
+label {
+    display: block;
+    font-size: 1.2em;
+    color: #4CAF50; /* テキストカラーを緑色に設定 */
+    text-align: left; /* ラベルを左揃えにする */
+}
+
+input[type=text] {
+    font-size: 1em;
+    padding: 0.8em;
+    border-radius: 8px;
+    border: 1px solid #4CAF50; /* ボーダーカラーを緑色に設定 */
+    flex: 1;
+    width: 100%; /* 入力フィールドを100%の幅にする */
+    box-sizing: border-box; /* ボックスモデルを変更してパディングとボーダーを含めた幅を設定 */
+}
+
+input[type=submit] {
+    font-size: 1em;
+    background-color: #4CAF50; /* 背景色を緑色に設定 */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 0.8em 1em;
+    cursor: pointer;
+}
+
+input[type=submit]:hover {
+    background-color: #3e8e41; /* ホバー時の背景色を濃い緑色に設定 */
+}
+
+/* ========== コンテンツのスタイル ========== */
+.content {
+    text-align: center;
+    margin: 0 auto;
+    max-width: 800px;
+    margin-top: 20px;
+}
+
+/* ========== エラーメッセージのスタイル ========== */
+.field-errors {
+    color: #e63946;
+    margin: 0;
+    padding: 0;
+}
+
+.field-errors li {
+    list-style-type: none;
+}
+
+/* リンクのスタイル */
+a {
+    color: #0f9d58; /* テーブルのヘッダーと同じ緑色 */
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* テーブルのスタイル */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #0f9d58; /* 緑色 */
+    color: #fff; /* テキストの色を白に変更 */
+}
+
+tr:nth-child(even) {
+    background-color: #e6f4ea; /* より薄い緑色 */
+}
+
+/* コンテンツのスタイル */
+.content {
+    text-align: center;
+    margin: 0 auto;
+    max-width: 800px;
+    margin-top: 20px;
+}

@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}
+    <h1>書籍検索</h1>
+{% endblock %}
+
+{% block content %}
+<div>
+    <p><a href="{{ url_for('cart') }}">カートへ</a></p>
+</div>
+    {% from "_formhelpers.html" import render_field %}
+    <form method="POST" novalidate>
+        {{ form.csrf_token }}
+        {{ render_field(form.name) }}
+        {% if message %}
+        <p>{{ message }}</p>
+    {% endif %}
+        <br>
+        {{ form.submit() }}
+    </form>
+{% endblock %}

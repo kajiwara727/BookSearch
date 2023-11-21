@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8" />
+    <title>書籍検索</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    {% block title %} タイトル {% endblock %}
+    <hr />
+    {% block content %} 内容 {% endblock %}
+</body>
+</html>
