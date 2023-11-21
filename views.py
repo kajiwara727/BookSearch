@@ -1,4 +1,4 @@
-from flask import render_template, redirect, session, url_for, request
+from flask import render_template, redirect, session, url_for, request, jsonify
 from app import app
 from models import db, Book, dbrows
 from forms import InputForm
@@ -21,11 +21,25 @@ def input():
     # GET
     return render_template('input.html', form=form)
 
-# 出力
-@app.route('/output', methods = ["POST"])
-def output():
-    return render_template('output.html')
-
 @app.route('/cart')
 def cart():
     return render_template('cart.html')
+
+@app.route('/update_cart', methods=['POST'])
+def update_cart():
+    data = request.get_json()
+    book_id = data['book_id']
+    is_listed = data['is_listed']
+
+    try:
+        # データベースを更新
+        book = Book.query.get(book_id)
+        if book:
+            book.list = is_listed
+            db.session.commit()
+            return jsonify({'message': 'Cart updated successfully'})
+        else:
+            return jsonify({'message': 'Book not found'}), 404
+    except Exception as e:
+        print("Error occurred:", e)
+        return jsonify({'message': 'Error updating cart'}), 500
