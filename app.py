@@ -4,6 +4,7 @@ from models import db
 
 ### インスタンス生成
 app = Flask(__name__)
+
 # 設定ファイル読み込み
 app.config.from_object("config.Config")
 # dbとFlaskとの紐づけ

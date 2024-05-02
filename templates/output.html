@@ -5,8 +5,11 @@
 {% endblock %}
 
 {% block content %}
-<div>
-    <p><a href="{{ url_for('input') }}">入力画面に戻る</a></p>
+<div style="margin: 20px; text-align: center; font-size: 18px;">
+    <p>
+        <a href="{{ url_for('input') }}" style="margin-right: 20px; text-decoration: none; color: #007BFF;">🠔 入力画面に戻る</a>
+        <a href="{{ url_for('cart') }}" style="text-decoration: none; color: #28A745;">🌟 お気に入りへ</a>
+    </p>
 </div>
 
 <div style="text-align: center; margin: 0 auto; max-width: 800px;">
@@ -19,7 +22,7 @@
                 <th>出版社</th>
                 <th>価格</th>
                 <th>ISBN</th>
-                <th>カート</th>
+                <th>カ｜ト</th>
             </tr>
         </thead>
         <tbody>

@@ -6,7 +6,7 @@
 
 {% block content %}
 <div>
-    <p><a href="{{ url_for('cart') }}">カートへ</a></p>
+    <p><a href="{{ url_for('cart') }}" style="text-decoration: none; color: #28A745;">🌟 お気に入りへ</a></p>
 </div>
     {% from "_formhelpers.html" import render_field %}
     <form method="POST" novalidate>

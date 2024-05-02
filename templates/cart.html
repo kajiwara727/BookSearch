@@ -1,12 +1,12 @@
 {% extends "base.html" %}
 
 {% block title %}
-    <h1>お気に入りの本</h1>
+    <h1>お気に入り</h1>
 {% endblock %}
 
 {% block content %}
 <div>
-    <p><a href="{{ url_for('input') }}">入力画面に戻る</a></p>
+    <p><a href="{{ url_for('input') }}" style="margin-right: 20px; text-decoration: none; color: #007BFF;">🠔 入力画面に戻る</a></p>
 </div>
 
 <div style="text-align: center; margin: 0 auto; max-width: 800px;">
@@ -19,57 +19,25 @@
                 <th>出版社</th>
                 <th>価格</th>
                 <th>ISBN</th>
-                <th>カート</th>
             </tr>
         </thead>
         <tbody>
             {% for result in results %}
-            <tr>
-                <td>{{ result.id }}</td>
-                <td>{{ result.title }}</td>
-                <td>{{ result.author }}</td>
-                <td>{{ result.publisher }}</td>
-                <td>{{ result.price }}</td>
-                <td>{{ result.isbn }}</td>
-                <td>
-                    <span class="cart-toggle" data-book-id="{{ result.id }}" data-list="{{ result.list }}">
-                        {% if result.list %}
-                            <a href="#" class="cart-link" data-list="true">★</a>
-                        {% else %}
-                            <a href="#" class="cart-link" data-list="false">☆</a>
-                        {% endif %}
-                    </span>
-                </td>
-            </tr>
+                {% if result.list %}
+                    <tr>
+                        <td>{{ result.id }}</td>
+                        <td>{{ result.title }}</td>
+                        <td>{{ result.author }}</td>
+                        <td>{{ result.publisher }}</td>
+                        <td>{{ result.price }}</td>
+                        <td>{{ result.isbn }}</td>
+                    </tr>
+                {% endif %}
             {% endfor %}
         </tbody>
     </table>
 </div>
 
-<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<script>
-    $(document).ready(function () {
-        $('.cart-link').click(function (event) {
-            event.preventDefault();
-            var $clickedElement = $(this);
-            var bookId = $clickedElement.closest('.cart-toggle').data('book-id');
-            var isListed = $clickedElement.closest('.cart-toggle').data('list');
-
-            // データベースを更新するためのAjaxリクエストを送信
-            $.ajax({
-                type: 'POST',
-                url: '/update_cart',
-                data: JSON.stringify({ 'book_id': bookId, 'is_listed': !isListed }),
-                contentType: 'application/json',
-                success: function () {
-                    // 新しい値に基づいて☆または★を更新
-                    $clickedElement.text(!isListed ? '★' : '☆');
-                    $clickedElement.closest('.cart-toggle').data('list', !isListed);
-                }
-            });
-        });
-    });
-</script>
 {% endblock %}
 
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">

@@ -35,3 +35,12 @@ def dbrows(param_str):
         print("Error occurred:", e)
         results = []
     return results
+
+# すべての本を取得
+def get_all_books():
+    try:
+        all_books = Book.query.all()
+    except Exception as e:
+        print("Error occurred:", e)
+        all_books = []
+    return all_books

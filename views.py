@@ -1,6 +1,6 @@
 from flask import render_template, redirect, session, url_for, request, jsonify
 from app import app
-from models import db, Book, dbrows
+from models import db, Book, dbrows, get_all_books
 from forms import InputForm
 
 ### ルーティング
@@ -23,7 +23,10 @@ def input():
 
 @app.route('/cart')
 def cart():
-    return render_template('cart.html')
+    results = []
+    results = get_all_books()
+
+    return render_template('cart.html', results = results)
 
 @app.route('/update_cart', methods=['POST'])
 def update_cart():
